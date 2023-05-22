@@ -5,6 +5,8 @@ Repository backend To Do List with Node Js
 - express
 - mysql2
 - sequelize
-- argon2
+- bcrypt
 - cors
 - dotenv
+- jsonwebtoken
+- cookie-parser
