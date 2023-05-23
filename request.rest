@@ -1,0 +1,10 @@
+GET http://localhost:5000/user
+
+###
+POST http://localhost:5000/user
+Content-Type: application/json
+
+{
+    "fullname": "Your Fullname",
+    "email": "Your Email"
+}
