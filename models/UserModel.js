@@ -15,6 +15,14 @@ const User = db.define(
     password: {
       type: DataTypes.STRING,
     },
+    status: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
+    change_password: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
     refresh_token: {
       type: DataTypes.TEXT,
     },
