@@ -7,6 +7,12 @@ Content-Type: application/json
 }
 
 ###
+GET http://localhost:5000/refresh-token
+
+###
+DELETE http://localhost:5000/logout
+
+###
 GET http://localhost:5000/user
 
 ###
