@@ -136,3 +136,40 @@ export const Logout = async (req, res) => {
   res.clearCookie("refreshToken");
   res.json({ msg: "Logout is success" });
 };
+
+export const register = async (req, res) => {
+  const users = await User.findAll({
+    attributes: ["id"],
+  });
+
+  if (users)
+    return res
+      .status(409)
+      .json({
+        msg: "There is already user in database, please adding user via Create User",
+      });
+
+  const { fullname, email } = req.body;
+
+  if (!fullname) return res.status(402).json({ msg: "Fullname is required" });
+
+  if (!email) return res.status(402).json({ msg: "Email is required" });
+
+  // Password default
+  const defPassword = "Pass12345";
+
+  const salt = await bcrypt.genSalt();
+  const hashPassword = await bcrypt.hash(defPassword, salt);
+
+  try {
+    await User.create({
+      fullname: fullname,
+      email: email,
+      password: hashPassword,
+    });
+
+    res.json({ msg: "Register is success, default Password: Pass12345" });
+  } catch (error) {
+    res.json({ msg: "Register is failed" });
+  }
+};
